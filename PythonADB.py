@@ -76,7 +76,7 @@ def close_or_open_specify_light(index):
     else:
         print("输入有误")
 
-#打开指定窗帘 //待测试-目测点击文本无法触发功能
+#打开指定窗帘
 def open_specify_curtain(index):
     if index!= None:
         d(text="窗帘%d"%(index)).click()
@@ -84,7 +84,7 @@ def open_specify_curtain(index):
     else:
         print("输入有误")
 
-#关闭指定窗帘 //待测试-目测点击文本无法触发功能
+#关闭指定窗帘
 def close_specify_curtain(index):
     if index!= None:
         d(text="窗帘%d"%(index)).click()
@@ -97,7 +97,7 @@ def once_nomal_state():
     global d
     d(text="场景").click()
     d(text="自定义").click()
-    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/c6v"]/android.widget.RelativeLayout[5]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/caa"]/android.widget.RelativeLayout[5]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
     return_home()
 
 
@@ -114,3 +114,4 @@ if __name__ == '__main__':
     #——————————————————————————————————————
     #测试功能
     sleep(5)#间隔几秒（等页面加载出来）
+    open_specify_curtain(1)
