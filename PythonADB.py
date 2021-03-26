@@ -87,7 +87,7 @@ def t_and_h():
         tempdir2=d(text="温度(℃)").sibling(className="android.widget.TextView").info['text']  
         print("当前空气湿度："+tempdir1)
         print("当前空气温度："+tempdir2)
-
+        return "h%d,t%d"%(tempdir1,tempdir2)
 
 #灯全开
 def all_light_on():
