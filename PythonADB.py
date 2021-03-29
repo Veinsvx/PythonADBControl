@@ -36,6 +36,7 @@ import threading
 def message_receiver(client_executor,addr):
     while True:
         msg = client_executor.recv(1024).decode('utf-8')
+        print(msg)
         if msg == 'exit':
             print('%s:%s发送关闭连接请求' % addr)
             break
@@ -50,8 +51,10 @@ def message_receiver(client_executor,addr):
         elif msg=="acf":#关闭所有窗帘
             all_curtain_off()
         elif "sl" in msg :#打开或关闭指定灯
+            print(msg[2:])
             close_or_open_specify_light(msg[2:])
         elif "osc" in msg :#打开指定窗帘
+            print(msg[3:])
             open_specify_curtain(msg[3:])
         elif "csc" : #关闭指定窗帘
             close_specify_curtain(msg[3:])
@@ -87,41 +90,49 @@ def t_and_h():
         tempdir2=d(text="温度(℃)").sibling(className="android.widget.TextView").info['text']  
         print("当前空气湿度："+tempdir1)
         print("当前空气温度："+tempdir2)
-        return "h%d,t%d"%(tempdir1,tempdir2)
+        return "h%s,t%s"%(tempdir1,tempdir2)
 
 #灯全开
 def all_light_on():
     d(text="场景").click()
     d(text="自定义").click()
-    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/c6v"]/android.widget.RelativeLayout[1]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    #xpath点击有问题，暂时弃用
+    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/caa"]/android.widget.RelativeLayout[1]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    #d.click(0.886, 0.333)
     return_home()
 
 #灯全关
 def all_light_off():
     d(text="场景").click()
     d(text="自定义").click()
-    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/c6v"]/android.widget.RelativeLayout[2]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    #xpath点击有问题，暂时弃用
+    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/caa"]/android.widget.RelativeLayout[2]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    #d.click(0.888, 0.469)
     return_home()
 
 #窗帘全开
 def all_curtain_on():
     d(text="场景").click()
     d(text="自定义").click()
-    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/c6v"]/android.widget.RelativeLayout[3]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    #xpath点击有问题，暂时弃用
+    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/caa"]/android.widget.RelativeLayout[3]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    #d.click(0.906, 0.6)
     return_home()
 
 #窗帘全关
 def all_curtain_off():
     d(text="场景").click()
     d(text="自定义").click()
-    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/c6v"]/android.widget.RelativeLayout[4]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    #xpath点击有问题，暂时弃用
+    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/caa"]/android.widget.RelativeLayout[4]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    #d.click(0.9, 0.715)
     return_home()
 
 #关闭或打开指定灯
 def close_or_open_specify_light(index):
     if index!= None:
         if index != 2:
-            d(text="灯%d"%(index)).click()
+            d(text="灯%s"%(index)).click()
             d(text="左键").click()
             d(text="右键").click()
         else:
@@ -129,28 +140,33 @@ def close_or_open_specify_light(index):
             #d(text="某按键").click()
     else:
         print("序号有误")
+    return_home()
 
 #打开指定窗帘
 def open_specify_curtain(index):
     if index!= None:
-        d(text="窗帘%d"%(index)).click()
+        d(text="窗帘%s"%(index)).click()
         d(text="打开").click()
     else:
         print("序号有误")
+    return_home()
 
 #关闭指定窗帘
 def close_specify_curtain(index):
     if index!= None:
-        d(text="窗帘%d"%(index)).click()
+        d(text="窗帘%s"%(index)).click()
         d(text="关闭").click()
     else:
         print("序号有误")
+    return_home()
 
 #被调用时，设置家居场景为默认状态
 def once_nomal_state():
     d(text="场景").click()
     d(text="自定义").click()
+    #xpath点击有问题，暂时弃用
     d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/caa"]/android.widget.RelativeLayout[5]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    #d.click(0.916, 0.844)
     return_home()
 
 
@@ -167,7 +183,7 @@ d.app_start("com.xiaomi.smarthome")
 #——————————————————————————————————————
 #鉴于通过ui包无法合理获取到电灯、插座和窗帘的运行状态，目前快速完成方案为python被unity调用运行时，把所有的灯和窗帘设置为关闭、插座为开启状态。
 return_home()
-#once_nomal_state()
+once_nomal_state()
 #——————————————————————————————————————
 # 进入死循环，等待新的客户端连入。一旦有客户端连入，就分配一个线程去做专门处理。然后自己继续等待。
 while True:
