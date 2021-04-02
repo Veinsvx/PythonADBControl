@@ -97,8 +97,8 @@ def all_light_on():
     d(text="场景").click()
     d(text="自定义").click()
     #xpath点击有问题，暂时弃用
-    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/caa"]/android.widget.RelativeLayout[1]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
-    #d.click(0.886, 0.333)
+    #d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/ca7"]/android.widget.RelativeLayout[1]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    d.click(0.886, 0.333)
     return_home()
 
 #灯全关
@@ -106,8 +106,8 @@ def all_light_off():
     d(text="场景").click()
     d(text="自定义").click()
     #xpath点击有问题，暂时弃用
-    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/caa"]/android.widget.RelativeLayout[2]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
-    #d.click(0.888, 0.469)
+    #d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/ca7"]/android.widget.RelativeLayout[2]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    d.click(0.888, 0.469)
     return_home()
 
 #窗帘全开
@@ -115,8 +115,8 @@ def all_curtain_on():
     d(text="场景").click()
     d(text="自定义").click()
     #xpath点击有问题，暂时弃用
-    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/caa"]/android.widget.RelativeLayout[3]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
-    #d.click(0.906, 0.6)
+    #d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/ca7"]/android.widget.RelativeLayout[3]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    d.click(0.906, 0.6)
     return_home()
 
 #窗帘全关
@@ -124,8 +124,8 @@ def all_curtain_off():
     d(text="场景").click()
     d(text="自定义").click()
     #xpath点击有问题，暂时弃用
-    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/caa"]/android.widget.RelativeLayout[4]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
-    #d.click(0.9, 0.715)
+    #d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/ca7"]/android.widget.RelativeLayout[4]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    d.click(0.9, 0.715)
     return_home()
 
 #关闭或打开指定灯
@@ -165,8 +165,8 @@ def once_nomal_state():
     d(text="场景").click()
     d(text="自定义").click()
     #xpath点击有问题，暂时弃用
-    d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/caa"]/android.widget.RelativeLayout[5]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
-    #d.click(0.916, 0.844)
+    #d.xpath('//*[@resource-id="com.xiaomi.smarthome:id/ca7"]/android.widget.RelativeLayout[5]/android.view.View[1]/android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.TextView[1]').click()
+    d.click(0.916, 0.844)
     return_home()
 
 
